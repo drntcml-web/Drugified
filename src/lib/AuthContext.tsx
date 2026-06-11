@@ -27,11 +27,11 @@ const AuthContext = createContext<AuthContextType | null>(null)
 
 const MOCK_USER: User = {
   id: '1',
-  name: 'Alex Rivera',
-  username: 'alex_recovery',
-  avatar: 'AR',
-  daysClean: 47,
-  bio: 'One day at a time. 47 days clean and counting.',
+  name: '',
+  username: 'new_user',
+  avatar: '?',
+  daysClean: 0,
+  bio: 'Starting my recovery journey.',
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -52,14 +52,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, _password: string) => {
     await new Promise(r => setTimeout(r, 600))
-    const u = { ...MOCK_USER, name: email.split('@')[0] }
+    const rawName = email.split('@')[0]
+    const name = rawName.charAt(0).toUpperCase() + rawName.slice(1)
+    const u = { ...MOCK_USER, name, username: rawName, avatar: name.slice(0, 2).toUpperCase() }
     setUser(u)
     localStorage.setItem('drugified_user', JSON.stringify(u))
   }
 
   const register = async (name: string) => {
     await new Promise(r => setTimeout(r, 600))
-    const u = { ...MOCK_USER, name }
+    const u = { ...MOCK_USER, name, username: name.toLowerCase().replace(/\s+/g, '_'), avatar: name.slice(0, 2).toUpperCase() }
     setUser(u)
     localStorage.setItem('drugified_user', JSON.stringify(u))
   }

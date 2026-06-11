@@ -1,11 +1,12 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { Home, Rss, Bell, BookOpen, User } from 'lucide-react'
+import { Home, Rss, Bell, BookOpen, User, History } from 'lucide-react'
 import { useAuth } from '@/lib/AuthContext'
 import { cn } from '@/lib/cn'
 
 const navItems = [
   { to: '/', icon: Home, label: 'Home' },
   { to: '/feed', icon: Rss, label: 'Feed' },
+  { to: '/social-history', icon: History, label: 'History' },
   { to: '/alerts', icon: Bell, label: 'Alerts' },
   { to: '/resources', icon: BookOpen, label: 'Resources' },
   { to: '/profile', icon: User, label: 'Profile' },

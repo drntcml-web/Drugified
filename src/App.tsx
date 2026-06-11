@@ -17,6 +17,7 @@ import Alerts from '@/pages/Alerts'
 import AlertDetail from '@/pages/AlertDetail'
 import Resources from '@/pages/Resources'
 import Profile from '@/pages/Profile'
+import SocialHistory from '@/pages/SocialHistory'
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth()
@@ -54,6 +55,7 @@ const AuthenticatedApp = () => {
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/alerts/:id" element={<AlertDetail />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/social-history" element={<SocialHistory />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Route>
